@@ -25,6 +25,16 @@ npm run build
 npm run preview
 ```
 
+## GitHub Pages
+
+The repository includes a GitHub Pages workflow at `.github/workflows/deploy-pages.yml`.
+
+- Pushes to `main` build and deploy automatically
+- The Vite `base` path is derived from GitHub Pages metadata during CI
+- Local builds still use `/`
+
+For a custom domain like `depth.ai`, set the domain in `Settings -> Pages`. When publishing via a custom GitHub Actions workflow, GitHub Pages ignores any `CNAME` file, so none is required in this repo.
+
 ## Contact Endpoint
 
 The frontend is static. Contact submits to an API endpoint configured by:
