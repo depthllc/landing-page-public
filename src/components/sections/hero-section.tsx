@@ -1,22 +1,23 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import SplitType from 'split-type'
+import { getPublicAssetUrl } from '@/lib/assets'
 
 const cards = [
   {
     title: 'Defense',
     subtitle: 'Mission decision terrain',
-    media: 'bg-[url(/defense_card_bg.png)] bg-cover bg-center',
+    media: getPublicAssetUrl('/defense_card_bg.png'),
   },
   {
     title: 'Autonomous Systems',
     subtitle: 'Real-time mission autonomy',
-    media: 'bg-[url(/autonomy_card_bg.png)] bg-cover bg-center',
+    media: getPublicAssetUrl('/autonomy_card_bg.png'),
   },
   {
     title: 'Robotics',
     subtitle: 'Spatial intelligence for machines',
-    media: 'bg-[url(/robotics_card_bg.png)] bg-cover bg-center',
+    media: getPublicAssetUrl('/robotics_card_bg.png'),
   },
 ]
 
@@ -101,7 +102,7 @@ export function HeroSection() {
               playsInline
               preload="auto"
             >
-              <source src="/digital-twin.mp4" type="video/mp4" />
+              <source src={getPublicAssetUrl('/digital-twin.mp4')} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-black/72" />
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,.48),rgba(0,0,0,.14)_18%,rgba(0,0,0,.14)_62%,rgba(0,0,0,.82))]" />
@@ -132,7 +133,8 @@ export function HeroSection() {
             {cards.map((card) => (
               <article
                 key={card.title}
-                className={`group relative overflow-hidden ${card.media}`}
+                className="group relative overflow-hidden bg-cover bg-center"
+                style={{ backgroundImage: `url(${card.media})` }}
               >
                 <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/40" />
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,.48),rgba(0,0,0,.14)_18%,rgba(0,0,0,.14)_62%,rgba(0,0,0,.82))] pointer-events-none" />

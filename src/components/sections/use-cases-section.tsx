@@ -1,24 +1,25 @@
 import { useLayoutEffect, useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { getPublicAssetUrl } from '@/lib/assets'
 
 const domains = [
   {
     name: 'Defense',
     copy: 'Build mission-ready context from multi-source ISR and evaluate options before deployment.',
-    video: '/national-defense.mp4',
-    poster: '/defense_card_bg.png',
+    video: getPublicAssetUrl('/national-defense.mp4'),
+    poster: getPublicAssetUrl('/defense_card_bg.png'),
   },
   {
     name: 'Autonomous Systems',
     copy: 'Fuse sensing, terrain, and constraints into real-time operational context for autonomous missions.',
-    video: '/auto-system.mp4',
-    poster: '/autonomy_card_bg.png',
+    video: getPublicAssetUrl('/auto-system.mp4'),
+    poster: getPublicAssetUrl('/autonomy_card_bg.png'),
   },
   {
     name: 'Robotics',
     copy: 'Give robotic systems spatial understanding, motion confidence, and decision context in live environments.',
-    video: '/robotics.mp4',
-    poster: '/robotics_card_bg.png',
+    video: getPublicAssetUrl('/robotics.mp4'),
+    poster: getPublicAssetUrl('/robotics_card_bg.png'),
   },
 ]
 
