@@ -1,36 +1,43 @@
 const milestones = [
   {
-    year: '2021-2024',
-    title: 'CVS Health / Aetna innovation work',
-    copy: 'GenAI-enabled diagnostics support and 3D patient visualization workstreams.',
+    year: 'Defense program',
+    title: 'DTRA Phase I SBIR',
+    copy: 'The Defense Threat Reduction Agency is currently validating DCE for blast consequence modeling and downstream impact analysis.',
   },
   {
-    year: '2025',
-    title: 'TechCrunch Disrupt Top 200',
-    copy: 'Selected for Startup Battlefield Top 200 cohort.',
+    year: 'Commercial deployment',
+    title: 'Healthcare, AI, and real estate',
+    copy: 'Depth has a proven track record across healthcare, AI development, and real estate.',
   },
   {
-    year: '2026',
-    title: 'DoD DTRA SBIR Phase I',
-    copy: 'Awarded for blast injury simulation modeling in armored vehicle contexts.',
+    year: 'Access',
+    title: 'Defense procurement pathways',
+    copy: 'Depth is opening procurement pathways that make DCE easier for defense programs to evaluate and adopt.',
   },
 ]
 
 export function ProofSection() {
   return (
-    <section id="proof" className="bg-[#f2f3ef] py-16 text-black sm:py-20">
+    <section id="proof" data-header-text="dark" className="bg-[#f2f3ef] py-16 text-black sm:py-20">
       <div className="mx-auto max-w-[96rem] px-4 sm:px-5 lg:px-6">
-        <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-black/60">Proof</p>
+        <p className="font-sans text-[12px] uppercase tracking-[0.22em] text-black/60">
+          Access
+        </p>
         <h2 className="mt-4 max-w-5xl text-[3rem] font-semibold leading-[0.92] tracking-[-0.03em] sm:text-[5.5rem]">
-          Evidence over adjectives.
+          Where DCE stands today.
         </h2>
+        <p className="mt-5 max-w-3xl text-base leading-relaxed text-black/75 sm:text-[1.0625rem]">
+          Today, DCE has an active DTRA Phase I SBIR, commercial work across healthcare, AI, and
+          real estate, and defense procurement pathways in development. The next milestone is
+          repeatable use inside a real planning workflow.
+        </p>
         <div className="mt-10 border-t border-black/15">
           {milestones.map((milestone) => (
             <article
-              key={milestone.year}
+              key={milestone.title}
               className="grid gap-3 border-b border-black/15 py-5 md:grid-cols-[10rem_1fr] md:gap-8"
             >
-              <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-black/60">
+              <p className="font-sans text-[12px] uppercase tracking-[0.18em] text-black/60">
                 {milestone.year}
               </p>
               <div>

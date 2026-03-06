@@ -1,41 +1,41 @@
 const steps = [
   {
     name: 'Ingest',
-    copy: 'Capture imagery, video, text, geospatial layers, and sensor feeds from heterogeneous systems.',
+    copy: 'Normalize geospatial systems, digital twins, sensor streams, simulations, and planning inputs into one operational context layer.',
   },
   {
-    name: 'Map',
-    copy: 'Reconstruct coherent 3D scenes and objects with depth-aware spatial registration.',
+    name: 'Constrain',
+    copy: 'Apply governing equations, boundary conditions, material parameters, and environmental limits to bound what can happen next.',
   },
   {
-    name: 'Understand',
-    copy: 'Resolve entities, relationships, and constraints into a structured spatial knowledge graph.',
+    name: 'Infer',
+    copy: 'Use Physics-Grounded Intelligence to calibrate uncertainty, accelerate scenario evaluation, and improve predictive robustness.',
   },
   {
-    name: 'Predict',
-    copy: 'Evaluate likely outcomes, risk contours, and tradeoffs across candidate actions.',
+    name: 'Propagate',
+    copy: 'Model cascading effects across infrastructure, human systems, and operational assets after a high-consequence physical event.',
   },
   {
-    name: 'Visualize',
-    copy: 'Deliver decision context across standard screens, immersive review, and collaborative displays.',
+    name: 'Rank',
+    copy: 'Re-rank consequences by mission priority, resilience gap, and operational dependency so planners can focus on the next critical decision.',
   },
   {
-    name: 'Act',
-    copy: 'Return ranked recommendations with traceable evidence chains.',
+    name: 'Deliver',
+    copy: 'Deliver Decisive Intelligence through Defense-Hardened Deployment, secure APIs, and containerized services built for formal planning workflows.',
   },
 ]
 
 export function PipelineSection() {
   return (
-    <section id="platform" className="bg-background pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section id="platform" data-header-text="light" className="bg-background pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div className="mx-auto max-w-[96rem] px-4 sm:px-5 lg:px-6">
-        <p className="label-kicker">Platform</p>
+        <p className="label-kicker">Depth Consequence Engine</p>
         <h2 className="section-headline mt-4 max-w-5xl">
-          One pipeline from raw signal to operational action.
+          From physical event to Decisive Intelligence.
         </h2>
         <p className="mt-5 max-w-3xl text-[1.0625rem] leading-relaxed text-foreground/75">
-          The model is continuously maintained as new data arrives. Decision context does not go
-          stale between handoffs.
+          DCE is a modular reasoning layer with Defense-Hardened Deployment. It enters existing
+          planning stacks through secure APIs rather than a standalone dashboard.
         </p>
 
         <div className="mt-10 border-t border-white/12">
@@ -44,7 +44,7 @@ export function PipelineSection() {
               key={step.name}
               className="grid gap-3 border-b border-white/12 py-5 md:grid-cols-[5rem_12rem_1fr] md:items-start md:gap-6"
             >
-              <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-foreground/60">
+              <p className="font-sans text-[12px] uppercase tracking-[0.2em] text-foreground/60">
                 {String(index + 1).padStart(2, '0')}
               </p>
               <h3 className="text-[2rem] font-semibold sm:text-[2.35rem]">{step.name}</h3>

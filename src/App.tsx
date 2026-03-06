@@ -18,8 +18,13 @@ function App() {
       </main>
       <footer>
         <div className="mx-auto flex max-w-[96rem] flex-col gap-2 px-4 py-8 text-[12px] uppercase tracking-[0.18em] text-foreground/55 sm:flex-row sm:items-center sm:justify-between sm:px-5 lg:px-6">
-          <p>Depth.ai</p>
-          <p>Decision terrains for high-stakes operations</p>
+          <p className="font-logo text-[18px] font-semibold normal-case tracking-[0.12em] text-foreground/72">
+            depth
+          </p>
+          <p className="normal-case">
+            Consequence intelligence infrastructure for defense and adjacent high-consequence
+            domains
+          </p>
         </div>
       </footer>
     </div>

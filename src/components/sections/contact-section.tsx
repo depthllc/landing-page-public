@@ -30,19 +30,17 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-background py-16 sm:py-20">
+    <section id="contact" data-header-text="light" className="bg-background py-16 sm:py-20">
       <div className="mx-auto grid max-w-[96rem] gap-10 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:px-6">
         <div>
-          <p className="label-kicker">Contact</p>
+          <p className="label-kicker">Request Briefing</p>
           <h2 className="section-headline mt-4 max-w-3xl">
-            Bring your mission data. Build your decision terrain.
+            Evaluate where DCE can enter the planning loop you already run.
           </h2>
           <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-foreground/75">
-            The frontend is static by design. Form submissions are handled through a serverless API
-            endpoint so you can deploy cleanly on Vercel, Netlify, or Cloudflare Pages.
-          </p>
-          <p className="mt-6 font-mono text-[12px] uppercase tracking-[0.18em] text-foreground/60">
-            Configure endpoint via <code>VITE_CONTACT_ENDPOINT</code>
+            If you are evaluating a high-consequence planning workflow, describe the operating
+            context, decision loop, and where DCE could become a required input. Depth will map
+            how Decisive Intelligence enters the stack.
           </p>
         </div>
         <form className="space-y-4 bg-white/[0.04] p-6 sm:p-8" onSubmit={onSubmit}>
@@ -75,7 +73,7 @@ export function ContactSection() {
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="message">What are you evaluating?</Label>
+            <Label htmlFor="message">What planning workflow are you evaluating?</Label>
             <Textarea
               id="message"
               required
@@ -89,10 +87,12 @@ export function ContactSection() {
             className="w-full rounded-none text-sm uppercase tracking-[0.18em]"
             disabled={status === 'submitting'}
           >
-            {status === 'submitting' ? 'Submitting...' : 'Send Request'}
+            {status === 'submitting' ? 'Submitting...' : 'Request Briefing'}
           </Button>
           {status === 'success' && (
-            <p className="text-sm text-primary">Request received. The team will follow up shortly.</p>
+            <p className="text-sm text-primary">
+              Request received. Depth will follow up to discuss the workflow.
+            </p>
           )}
           {status === 'error' && (
             <p className="text-sm text-destructive">

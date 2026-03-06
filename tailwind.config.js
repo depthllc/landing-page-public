@@ -55,18 +55,13 @@ export default {
   		},
   		fontFamily: {
   			heading: [
-  				'Arimo',
-  				'sans-serif'
+  				'var(--font-heading)'
+  			],
+  			logo: [
+  				'var(--font-logo)'
   			],
   			sans: [
-  				'Arimo',
-  				'system-ui',
-  				'sans-serif'
-  			],
-  			mono: [
-  				'IBM Plex Mono',
-  				'ui-monospace',
-  				'monospace'
+  				'var(--font-sans)'
   			]
   		}
   	}

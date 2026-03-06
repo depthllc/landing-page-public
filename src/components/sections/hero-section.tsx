@@ -5,18 +5,18 @@ import { getPublicAssetUrl } from '@/lib/assets'
 
 const cards = [
   {
-    title: 'Defense',
-    subtitle: 'Mission decision terrain',
+    title: 'Domain-Agnostic',
+    subtitle: 'Different domain adapters. Same core engine.',
     media: getPublicAssetUrl('/defense_card_bg.png'),
   },
   {
-    title: 'Autonomous Systems',
-    subtitle: 'Real-time mission autonomy',
+    title: 'Embed-First',
+    subtitle: 'Required input layer, not a dashboard.',
     media: getPublicAssetUrl('/autonomy_card_bg.png'),
   },
   {
-    title: 'Robotics',
-    subtitle: 'Spatial intelligence for machines',
+    title: 'Defense-Hardened Deployment',
+    subtitle: 'Containerized, secure, API-accessible integration.',
     media: getPublicAssetUrl('/robotics_card_bg.png'),
   },
 ]
@@ -35,26 +35,51 @@ export function HeroSection() {
     if (!overlay || !headline || !video) return
 
     let split: SplitType | undefined
+    let timeline: gsap.core.Timeline | undefined
+    let resizeFrame = 0
+    let cancelled = false
     const setPlaybackRate = () => {
       video.playbackRate = 0.4
+    }
+    const buildSplit = () => {
+      split?.revert()
+      split = new SplitType(headline, { types: 'lines' })
+      return split.lines ?? []
+    }
+    const showResolvedLines = (lines: HTMLElement[] = split?.lines ?? []) => {
+      gsap.set(overlay, { autoAlpha: 1 })
+      gsap.set(lines, {
+        autoAlpha: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        clearProps: 'overflow',
+      })
     }
 
     setPlaybackRate()
     video.addEventListener('loadedmetadata', setPlaybackRate)
     video.addEventListener('play', setPlaybackRate)
 
-    const ctx = gsap.context(() => {
+    const initializeHero = async () => {
+      try {
+        await document.fonts.ready
+      } catch {
+        // If the browser does not fully support FontFaceSet readiness, continue with current metrics.
+      }
+      if (cancelled) return
+
+      const lines = buildSplit()
+
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        gsap.set(overlay, { autoAlpha: 1 })
+        showResolvedLines(lines)
         return
       }
 
-      split = new SplitType(headline, { types: 'lines' })
       gsap.set(overlay, { autoAlpha: 1 })
-      gsap.set(split.lines, { overflow: 'hidden' })
-      gsap.set(split.lines, { autoAlpha: 0, y: 28, filter: 'blur(10px)' })
+      gsap.set(lines, { overflow: 'hidden' })
+      gsap.set(lines, { autoAlpha: 0, y: 28, filter: 'blur(10px)' })
 
-      const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
       if (kicker) {
         timeline.fromTo(
           kicker,
@@ -70,26 +95,49 @@ export function HeroSection() {
         { autoAlpha: 1, duration: 0.25 },
         0,
       )
-      timeline.to(split.lines, {
-        autoAlpha: 1,
-        y: 0,
-        filter: 'blur(0px)',
-        duration: 1.05,
-        stagger: 0.11,
-        ease: 'power2.out',
-      }, 0.14)
-    }, overlay)
+      timeline.to(
+        lines,
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 1.05,
+          stagger: 0.11,
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.set(lines, { clearProps: 'overflow' })
+          },
+        },
+        0.14,
+      )
+    }
+
+    const handleResize = () => {
+      if (resizeFrame) cancelAnimationFrame(resizeFrame)
+      resizeFrame = requestAnimationFrame(() => {
+        if (!headlineRef.current) return
+        timeline?.kill()
+        const lines = buildSplit()
+        showResolvedLines(lines)
+      })
+    }
+
+    initializeHero()
+    window.addEventListener('resize', handleResize)
 
     return () => {
+      cancelled = true
+      timeline?.kill()
+      if (resizeFrame) cancelAnimationFrame(resizeFrame)
+      window.removeEventListener('resize', handleResize)
       video.removeEventListener('loadedmetadata', setPlaybackRate)
       video.removeEventListener('play', setPlaybackRate)
       split?.revert()
-      ctx.revert()
     }
   }, [])
 
   return (
-    <section id="top" className="bg-background">
+    <section id="top" data-header-text="light" className="bg-background">
       <div className="mx-auto max-w-[96rem] px-4 sm:px-5 lg:px-6">
         <div className="flex min-h-[100svh] flex-col justify-end pb-4 pt-14 sm:pb-5 sm:pt-16">
           <article className="relative overflow-hidden">
@@ -112,24 +160,30 @@ export function HeroSection() {
               ref={overlayRef}
               className="absolute inset-0 flex items-center justify-center px-6 text-center"
             >
-              <div className="pointer-events-none mx-auto max-w-[21rem] sm:max-w-[40rem] lg:max-w-[52rem]">
+              <div className="pointer-events-none mx-auto max-w-[21rem] sm:max-w-[46rem] lg:max-w-[68rem] xl:max-w-[72rem]">
                 <p
                   ref={kickerRef}
-                  className="mb-4 font-mono text-[11px] uppercase tracking-[0.26em] text-white/70 sm:mb-6 sm:text-[12px]"
+                  className="mb-4 font-sans text-[11px] uppercase tracking-[0.26em] text-white/70 sm:mb-6 sm:text-[12px]"
                 >
-                  Decision Terrain Engine
+                  Consequence Intelligence Infrastructure
                 </p>
                 <h1
                   ref={headlineRef}
-                  className="text-[2.25rem] font-semibold uppercase leading-[0.87] tracking-[-0.038em] text-white sm:text-[4.15rem] lg:text-[5.4rem]"
+                  className="text-[2.25rem] font-[600] uppercase leading-[1.02] tracking-[-0.038em] text-white sm:text-[4.15rem] sm:leading-[0.98] lg:text-[5.4rem] lg:leading-[0.94]"
                 >
-                  Turning critical data into 3D operational context
+                  Decisive Intelligence for Critical-Path Integration
                 </h1>
+                <p className="mx-auto mt-5 max-w-[44rem] text-base leading-relaxed text-white/78 sm:mt-6 sm:max-w-[50rem] sm:text-[1.0625rem] lg:max-w-[54rem]">
+                  The Depth Consequence Engine (DCE) is a modular, API-first, containerized
+                  reasoning engine that turns physical events into Decisive Intelligence across
+                  structural, human, and operational consequence. Validated in defense, DCE is
+                  designed for Critical-Path Integration inside formal planning workflows.
+                </p>
               </div>
             </div>
           </article>
 
-          <div id="domains" className="mt-1.5 grid gap-1.5 sm:mt-2 sm:grid-cols-3 sm:gap-2">
+          <div id="pillars" className="mt-1.5 grid gap-1.5 sm:mt-2 sm:grid-cols-3 sm:gap-2">
             {cards.map((card) => (
               <article
                 key={card.title}
