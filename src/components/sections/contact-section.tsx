@@ -35,12 +35,10 @@ export function ContactSection() {
         <div>
           <p className="label-kicker">Request Briefing</p>
           <h2 className="section-headline mt-4 max-w-3xl">
-            Evaluate where DCE can enter the planning loop you already run.
+            Evaluate where DCE becomes a required input.
           </h2>
           <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-foreground/75">
-            If you are evaluating a high-consequence planning workflow, describe the operating
-            context, decision loop, and where DCE could become a required input. Depth will map
-            how Decisive Intelligence enters the stack.
+            If you are working on a high-consequence workflow, describe the operating context and where consequence forecasting could change a decision. Depth will assess how DCE enters your stack as Consequence Intelligence Infrastructure.
           </p>
         </div>
         <form className="space-y-4 bg-white/[0.04] p-6 sm:p-8" onSubmit={onSubmit}>
@@ -73,7 +71,7 @@ export function ContactSection() {
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="message">What planning workflow are you evaluating?</Label>
+            <Label htmlFor="message">Describe your workflow and where consequence forecasting matters.</Label>
             <Textarea
               id="message"
               required

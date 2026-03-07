@@ -1,11 +1,14 @@
+import { Routes, Route } from 'react-router-dom'
 import { ContactSection } from '@/components/sections/contact-section'
 import { HeroSection } from '@/components/sections/hero-section'
 import { PipelineSection } from '@/components/sections/pipeline-section'
 import { ProofSection } from '@/components/sections/proof-section'
 import { UseCasesSection } from '@/components/sections/use-cases-section'
 import { SiteHeader } from '@/components/site-header'
+import { ManifestoPage } from '@/pages/manifesto'
+import { TeamPage } from '@/pages/team'
 
-function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -28,6 +31,16 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/manifesto" element={<ManifestoPage />} />
+      <Route path="/team" element={<TeamPage />} />
+    </Routes>
   )
 }
 

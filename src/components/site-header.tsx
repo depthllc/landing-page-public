@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const navItems = [
   { label: 'DCE', href: '#platform' },
-  { label: 'Planning Loops', href: '#use-cases' },
-  { label: 'Access', href: '#proof' },
+  { label: 'Applications', href: '#use-cases' },
+  { label: 'Validation', href: '#proof' },
 ]
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
   const [headerTextTone, setHeaderTextTone] = useState<'light' | 'dark'>('light')
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  const isSubpage = location.pathname === '/manifesto' || location.pathname === '/team'
 
   useEffect(() => {
     const updateHeaderTone = () => {
@@ -48,14 +52,14 @@ export function SiteHeader() {
   return (
     <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 bg-transparent">
       <div className="mx-auto flex max-w-[96rem] items-center justify-between px-4 py-5 sm:px-5 lg:px-6">
-        <a
+        <Link
           className={`font-logo text-[18px] font-semibold tracking-[0.12em] transition-colors ${headerTextTone === 'dark' ? 'text-black/80 hover:text-black' : 'text-white/90 hover:text-white'}`}
-          href="#top"
+          to="/"
         >
           depth
-        </a>
+        </Link>
         <nav className="hidden items-center gap-10 md:flex">
-          {navItems.map((item) => (
+          {isHome && navItems.map((item) => (
             <a
               key={item.label}
               className={`font-heading text-[14px] font-normal tracking-[-0.01em] transition-colors ${textClass}`}
@@ -64,13 +68,38 @@ export function SiteHeader() {
               {item.label}
             </a>
           ))}
+          {isHome && (
+            <Link
+              to="/team"
+              className={`font-heading text-[14px] font-normal tracking-[-0.01em] transition-colors ${textClass}`}
+            >
+              Team
+            </Link>
+          )}
+          {isHome && (
+            <Link
+              to="/manifesto"
+              className={`font-heading text-[14px] font-normal tracking-[-0.01em] transition-colors ${textClass}`}
+            >
+              Manifesto
+            </Link>
+          )}
         </nav>
-        <a
-          href="#contact"
-          className={`font-heading text-[14px] tracking-[-0.01em] transition-colors ${textClass}`}
-        >
-          Request Briefing +
-        </a>
+        {isSubpage ? (
+          <Link
+            to="/"
+            className={`font-heading text-[14px] tracking-[-0.01em] transition-colors ${textClass}`}
+          >
+            Back to DCE
+          </Link>
+        ) : (
+          <a
+            href="#contact"
+            className={`font-heading text-[14px] tracking-[-0.01em] transition-colors ${textClass}`}
+          >
+            Request Briefing +
+          </a>
+        )}
       </div>
     </header>
   )

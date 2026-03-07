@@ -5,18 +5,18 @@ import { getPublicAssetUrl } from '@/lib/assets'
 
 const cards = [
   {
-    title: 'Domain-Agnostic',
-    subtitle: 'Different domain adapters. Same core engine.',
+    title: 'One Engine. Any Domain.',
+    subtitle: 'Domain adapters extend the core. The architecture does not change.',
     media: getPublicAssetUrl('/defense_card_bg.png'),
   },
   {
-    title: 'Embed-First',
-    subtitle: 'Required input layer, not a dashboard.',
+    title: 'Embedded, Not Bolted On.',
+    subtitle: 'DCE becomes a required input to the planning workflow — not a tool beside it.',
     media: getPublicAssetUrl('/autonomy_card_bg.png'),
   },
   {
     title: 'Defense-Hardened Deployment',
-    subtitle: 'Containerized, secure, API-accessible integration.',
+    subtitle: 'Containerized, IL-ready, API-accessible. Built for the stack you already run.',
     media: getPublicAssetUrl('/robotics_card_bg.png'),
   },
 ]
@@ -165,19 +165,16 @@ export function HeroSection() {
                   ref={kickerRef}
                   className="mb-4 font-sans text-[11px] uppercase tracking-[0.26em] text-white/70 sm:mb-6 sm:text-[12px]"
                 >
-                  Consequence Intelligence Infrastructure
+                  Depth Consequence Engine
                 </p>
                 <h1
                   ref={headlineRef}
-                  className="text-[2.25rem] font-[600] uppercase leading-[1.02] tracking-[-0.038em] text-white sm:text-[4.15rem] sm:leading-[0.98] lg:text-[5.4rem] lg:leading-[0.94]"
+                  className="text-[2.25rem] font-[600] leading-[1.02] tracking-[-0.038em] text-white sm:text-[4.15rem] sm:leading-[0.98] lg:text-[5.4rem] lg:leading-[0.94]"
                 >
-                  Decisive Intelligence for Critical-Path Integration
+                  Consequence Intelligence Infrastructure
                 </h1>
                 <p className="mx-auto mt-5 max-w-[44rem] text-base leading-relaxed text-white/78 sm:mt-6 sm:max-w-[50rem] sm:text-[1.0625rem] lg:max-w-[54rem]">
-                  The Depth Consequence Engine (DCE) is a modular, API-first, containerized
-                  reasoning engine that turns physical events into Decisive Intelligence across
-                  structural, human, and operational consequence. Validated in defense, DCE is
-                  designed for Critical-Path Integration inside formal planning workflows.
+                  The Depth Consequence Engine (DCE) turns physical events into Decisive Intelligence across structural, human, and operational consequence. Built for Critical-Path Integration inside formal planning workflows — validated in defense, extensible across every high-consequence domain.
                 </p>
               </div>
             </div>

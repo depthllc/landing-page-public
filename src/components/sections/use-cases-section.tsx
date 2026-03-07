@@ -4,20 +4,20 @@ import { getPublicAssetUrl } from '@/lib/assets'
 
 const loops = [
   {
-    name: 'Infrastructure resilience planning',
-    copy: 'Estimate installation damage, system degradation, and recovery priorities before cascading consequences widen the resilience gap.',
+    name: 'Installation resilience',
+    copy: 'Estimate infrastructure damage, system degradation, and recovery priorities before cascading consequences widen the resilience gap.',
     video: getPublicAssetUrl('/national-defense.mp4'),
     poster: getPublicAssetUrl('/defense_card_bg.png'),
   },
   {
-    name: 'Operational consequence planning',
+    name: 'Operational consequence forecasting',
     copy: 'Model structural, human, and operational consequence so teams can act before planning assumptions fail.',
     video: getPublicAssetUrl('/auto-system.mp4'),
     poster: getPublicAssetUrl('/autonomy_card_bg.png'),
   },
   {
-    name: 'Mission-priority mitigation planning',
-    copy: 'Surface resilience gaps, mitigation priorities, and mission-weighted tradeoffs with Decisive Intelligence.',
+    name: 'Mitigation prioritization',
+    copy: 'Surface resilience gaps and operational tradeoffs so planners can act on the highest-consequence decision first.',
     video: getPublicAssetUrl('/robotics.mp4'),
     poster: getPublicAssetUrl('/robotics_card_bg.png'),
   },
@@ -51,9 +51,9 @@ export function UseCasesSection() {
   return (
     <section id="use-cases" data-header-text="light" className="bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-[96rem] px-4 sm:px-5 lg:px-6">
-        <p className="label-kicker">Planning Loops</p>
+        <p className="label-kicker">Applications</p>
         <h2 className="section-headline mt-4 max-w-5xl">
-          Three planning loops for Critical-Path Integration.
+          Where DCE enters the workflow.
         </h2>
 
         <div className="mt-10 grid gap-2 lg:grid-cols-3">

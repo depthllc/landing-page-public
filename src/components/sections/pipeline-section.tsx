@@ -9,7 +9,7 @@ const steps = [
   },
   {
     name: 'Infer',
-    copy: 'Use Physics-Grounded Intelligence to calibrate uncertainty, accelerate scenario evaluation, and improve predictive robustness.',
+    copy: 'Use a Hybrid Physics-AI architecture to calibrate uncertainty, accelerate scenario evaluation, and improve predictive robustness.',
   },
   {
     name: 'Propagate',
@@ -17,11 +17,11 @@ const steps = [
   },
   {
     name: 'Rank',
-    copy: 'Re-rank consequences by mission priority, resilience gap, and operational dependency so planners can focus on the next critical decision.',
+    copy: 'Re-rank consequences by mission priority and operational dependency. The highest-consequence decision surfaces first.',
   },
   {
     name: 'Deliver',
-    copy: 'Deliver Decisive Intelligence through Defense-Hardened Deployment, secure APIs, and containerized services built for formal planning workflows.',
+    copy: 'Return Decisive Intelligence through secure, containerized APIs built for formal planning workflows — auditable, explainable, and ready to act on.',
   },
 ]
 
@@ -34,8 +34,9 @@ export function PipelineSection() {
           From physical event to Decisive Intelligence.
         </h2>
         <p className="mt-5 max-w-3xl text-[1.0625rem] leading-relaxed text-foreground/75">
-          DCE is a modular reasoning layer with Defense-Hardened Deployment. It enters existing
-          planning stacks through secure APIs rather than a standalone dashboard.
+          DCE is a modular reasoning layer that integrates into existing planning stacks through
+          secure APIs as a required input to the workflow. Built for Defense-Hardened Deployment
+          from day one.
         </p>
 
         <div className="mt-10 border-t border-white/12">
