@@ -184,9 +184,12 @@ export function HeroSection() {
             {cards.map((card) => (
               <article
                 key={card.title}
-                className="group relative overflow-hidden bg-cover bg-center"
-                style={{ backgroundImage: `url(${card.media})` }}
+                className="group relative overflow-hidden"
               >
+                <div
+                  className="hero-card-media absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${card.media})` }}
+                />
                 <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/40" />
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,.48),rgba(0,0,0,.14)_18%,rgba(0,0,0,.14)_62%,rgba(0,0,0,.82))] pointer-events-none" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.1),rgba(0,0,0,0.54)_56%,rgba(0,0,0,0.78)_100%)] pointer-events-none" />

@@ -83,4 +83,37 @@
       radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 35%),
       radial-gradient(circle at 80% 65%, rgba(255, 255, 255, 0.04), transparent 38%);
   }
+
+  .hero-card-media {
+    animation: hero-card-drift 16s ease-in-out infinite alternate;
+    transform: scale(1.04);
+    transition:
+      filter 600ms ease,
+      transform 900ms ease;
+    will-change: transform;
+  }
+
+  .group:hover .hero-card-media {
+    filter: saturate(1.08) contrast(1.04);
+    transform: scale(1.09);
+  }
+
+  @keyframes hero-card-drift {
+    from {
+      background-position: 50% 50%;
+      transform: scale(1.04);
+    }
+
+    to {
+      background-position: 56% 44%;
+      transform: scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-card-media {
+      animation: none;
+      transform: none;
+    }
+  }
 }
