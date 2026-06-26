@@ -17,7 +17,7 @@ const initialForm: ContactPayload = {
 
 export function ContactSection() {
   const [form, setForm] = useState<ContactPayload>(initialForm)
-  const { submit, status, error, reset } = useContactForm()
+  const { submit, status, error, reset, deliveryMode } = useContactForm()
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -89,7 +89,9 @@ export function ContactSection() {
           </Button>
           {status === 'success' && (
             <p className="text-sm text-primary">
-              Request received. Depth will follow up to discuss the workflow.
+              {deliveryMode === 'email'
+                ? 'Your email app opened with a pre-filled request to Depth. Send it to complete the briefing request.'
+                : 'Request received. Depth will follow up to discuss the workflow.'}
             </p>
           )}
           {status === 'error' && (

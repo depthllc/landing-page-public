@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import { ContactSection } from '@/components/sections/contact-section'
+import { DefenseReadySection } from '@/components/sections/defense-ready-section'
 import { HeroSection } from '@/components/sections/hero-section'
+import { OperationalDomainsSection } from '@/components/sections/operational-domains-section'
 import { PipelineSection } from '@/components/sections/pipeline-section'
 import { ProofSection } from '@/components/sections/proof-section'
 import { UseCasesSection } from '@/components/sections/use-cases-section'
@@ -16,6 +18,8 @@ function HomePage() {
         <HeroSection />
         <PipelineSection />
         <UseCasesSection />
+        <OperationalDomainsSection />
+        <DefenseReadySection />
         <ProofSection />
         <ContactSection />
       </main>

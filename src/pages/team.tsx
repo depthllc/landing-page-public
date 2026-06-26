@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Linkedin } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 
 const team = [
@@ -6,6 +7,7 @@ const team = [
     name: 'Dr. Gloryvee Cordero',
     role: 'Chief Executive Officer',
     focus: 'Platform architecture, simulation infrastructure, defense deployment',
+    linkedin: 'https://www.linkedin.com/in/gloryvee',
     bio: 'Gloryvee has spent two decades building platforms that operate in the real world. AI systems, physics-aware simulation pipelines, and spatial computing infrastructure across defense, government, and enterprise. At Depth, she owns the architecture of DCE: how it is built, how it deploys, and how it earns trust in regulated, high-stakes environments. She has secured government and venture funding, scaled global engineering teams, and run programs across DoD, NIH, NSF, and the NVIDIA ecosystem. She holds a Doctorate in Computer Science and serves as an IEEE Standards Advisor, including working groups on Spatial Computing and Digital Earth.',
     credential: 'Doctorate of Computer Science · IEEE Standards Advisor · NVIDIA Inception · DoD/NIH/NSF program experience',
   },
@@ -13,6 +15,7 @@ const team = [
     name: 'YuFei Jin',
     role: 'Chief Operating Officer',
     focus: 'Government contracting, execution, business development',
+    linkedin: 'https://www.linkedin.com/in/feijin',
     bio: 'YuFei translates strategy into operational reality. At Depth, that means running the government contracting workflows that make DCE accessible: SBIR milestone delivery, federal compliance, and agency relationships, while building the business development pipeline that carries the engine into new programs. She brings 15+ years of cross-sector operations experience and has managed campaigns across a significant real estate and enterprise portfolio. Her edge is execution precision in environments where process and relationships both matter. She holds a B.A. in Philosophy from Barnard College, Columbia University, and is a co-author on peer-reviewed research in multi-modal language models for remote sensing.',
     credential: 'B.A. Philosophy, Barnard College (Columbia) · DoD SBIR execution · Federal compliance (DFARS/SAM/ITAR)',
   },
@@ -20,6 +23,7 @@ const team = [
     name: 'Dr. Benji Peng',
     role: 'Chief Science Officer',
     focus: 'ML architecture, physics-AI hybrid systems, uncertainty quantification',
+    linkedin: 'https://www.linkedin.com/in/benjiph/',
     bio: 'Benji owns the science inside DCE. His Ph.D. from Georgia Tech spans computational biophysics, biomedical imaging, and machine learning, the exact foundation the Hybrid Physics-AI architecture is built on. Before Depth, he worked at Meta\'s Superintelligence Lab as a GenAI Content Engineer, contributing to the next generation of large-scale AI systems. His published research includes first-author work now in active production use. At Depth, he owns the modeling architecture: the Physics Constraint Core, the Adaptive Inference Layer, uncertainty quantification, and the scientific validity of every consequence forecast the engine produces.',
     credential: 'Ph.D. Georgia Tech · Meta Superintelligence Lab (AI Tutor, 1B+ MAU scale) · First-author publications in JPCB and JChromA',
   },
@@ -65,6 +69,16 @@ export function TeamPage() {
                     <p className="mt-4 text-[13px] leading-relaxed text-foreground/40">
                       {person.focus}
                     </p>
+                    <a
+                      href={person.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${person.name} on LinkedIn`}
+                      className="mt-6 inline-flex items-center gap-2 font-sans text-[12px] uppercase tracking-[0.18em] text-foreground/55 transition-colors hover:text-[var(--brand-teal)]"
+                    >
+                      <Linkedin className="h-4 w-4" aria-hidden="true" />
+                      LinkedIn
+                    </a>
                   </div>
                   <div>
                     <p className="text-[1.0625rem] leading-[1.75] text-foreground/80 sm:text-[1.125rem]">

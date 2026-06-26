@@ -8,16 +8,45 @@ export type ContactPayload = {
 }
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
+type DeliveryMode = 'endpoint' | 'email'
 
-export function useContactForm(endpoint = import.meta.env.VITE_CONTACT_ENDPOINT ?? '/api/contact') {
+const fallbackEmail = 'glory@depth.ai'
+
+function buildMailtoUrl(payload: ContactPayload) {
+  const subject = encodeURIComponent(`Depth briefing request from ${payload.name}`)
+  const body = encodeURIComponent(
+    [
+      `Name: ${payload.name}`,
+      `Email: ${payload.email}`,
+      `Organization: ${payload.organization}`,
+      '',
+      'Workflow / request:',
+      payload.message,
+    ].join('\n'),
+  )
+
+  return `mailto:${fallbackEmail}?subject=${subject}&body=${body}`
+}
+
+const defaultEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact'
+
+export function useContactForm(endpoint = defaultEndpoint) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
+  const [deliveryMode, setDeliveryMode] = useState<DeliveryMode>('endpoint')
 
   async function submit(payload: ContactPayload) {
     setStatus('submitting')
     setError(null)
 
     try {
+      if (!endpoint) {
+        window.location.href = buildMailtoUrl(payload)
+        setDeliveryMode('email')
+        setStatus('success')
+        return
+      }
+
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -31,6 +60,7 @@ export function useContactForm(endpoint = import.meta.env.VITE_CONTACT_ENDPOINT 
         throw new Error(data?.message ?? 'Unable to submit request. Please try again.')
       }
 
+      setDeliveryMode('endpoint')
       setStatus('success')
     } catch (err) {
       setStatus('error')
@@ -43,5 +73,5 @@ export function useContactForm(endpoint = import.meta.env.VITE_CONTACT_ENDPOINT 
     setError(null)
   }
 
-  return { submit, reset, status, error }
+  return { submit, reset, status, error, deliveryMode }
 }
